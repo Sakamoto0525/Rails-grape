@@ -55,3 +55,20 @@ $ docker-compose up
 # 停止
 $ docker-compose stop
 ```
+
+### エラー対処
+
+原因：Rails に付随しているWEBサーバが正常に終了していない。docker-compose kill や 何かの拍子でコンテナが終了すると起きてしまう。
+
+pid は、開発用WEBサーバを起動するときに tmp/pids/server.pidに書き込まれ、終了するときに削除されます。
+server.pid に pid が書かれていると開発用WEBサーバが起動中（プロセスがある）と判断されてしまいます。
+
+```ruby:Error
+A server is already running. Check /myapp/tmp/pids/server.pid.
+```
+
+対処：pid の情報を削除
+
+```bash:Command
+$ rm tmp/pids/server.pid
+```
