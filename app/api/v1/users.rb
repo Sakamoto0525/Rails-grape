@@ -14,7 +14,7 @@ class V1::Users < Grape::API
     desc 'returns all users' # 説明文が入る
     get '/' do
       users = User.all # 最後に評価された値がレスポンスとして返される
-      present user, with: V1::Entities::UserEntity
+      present users, with: V1::Entities::UserEntity
     end
 
     # GET /users/1
