@@ -14,7 +14,8 @@ grapeを使用したAPI作成学習
 ### プロジェクト作成
 ```bash
 # --api : APIモードで作成
-# --force --database=postgresql : Dbにpostgresqlを使用
+# --force : ファイルが存在する場合には上書きされる
+# --database=postgresql : Dbにpostgresqlを使用
 $ docker-compose run web rails new . --api --force --database=postgresql
 ```
 
